@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, effect} from '@angular/core';
+import { EstadoService } from './services/estado/estado.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'NG-CALCULADORA';
+  public  mostrarSobre:any;
+ 
+
+  constructor(mostrar: EstadoService) {
+    
+    effect(()=>{
+      this.mostrarSobre = mostrar.mostrarSobre();
+    })
+
+  }
+
 }
+
